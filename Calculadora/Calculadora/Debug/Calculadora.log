@@ -1,0 +1,9 @@
+﻿  Calculadora.lex.c
+Calculadora.lex.c(1477): warning C4996: 'fileno': The POSIX name for this item is deprecated. Instead, use the ISO C and C++ conformant name: _fileno. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.15063.0\ucrt\stdio.h(2456): note: vea la declaración de 'fileno'
+Calculadora.lex.c(1671): warning C4013: 'exit' sin definir; se supone que extern devuelve como resultado int
+Calculadora.lex.c(1734): warning C4013: 'malloc' sin definir; se supone que extern devuelve como resultado int
+Calculadora.lex.c(1752): warning C4013: 'realloc' sin definir; se supone que extern devuelve como resultado int
+Calculadora.lex.c(1762): warning C4013: 'free' sin definir; se supone que extern devuelve como resultado int
+  Calculadora.vcxproj -> C:\Users\L440\source\repos\Calculadora\Debug\Calculadora.exe
+  Calculadora.vcxproj -> C:\Users\L440\source\repos\Calculadora\Debug\Calculadora.pdb (Partial PDB)

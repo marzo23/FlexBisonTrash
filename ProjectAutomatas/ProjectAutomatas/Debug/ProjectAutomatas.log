@@ -1,0 +1,12 @@
+﻿  YAC.c
+FLEX.h(1612): warning C4013: 'isatty' sin definir; se supone que extern devuelve como resultado int
+FLEX.h(1612): warning C4996: 'fileno': The POSIX name for this item is deprecated. Instead, use the ISO C and C++ conformant name: _fileno. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.15063.0\ucrt\stdio.h(2456): note: vea la declaración de 'fileno'
+YAC.c(1836): warning C4013: 'yyerror' sin definir; se supone que extern devuelve como resultado int
+calc.y(198): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.15063.0\ucrt\string.h(136): note: vea la declaración de 'strcpy'
+calc.y(230): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.15063.0\ucrt\string.h(136): note: vea la declaración de 'strcpy'
+c:\users\l440\source\repos\projectautomatas\projectautomatas\calc.y(194): warning C4716: 'yyerror': debe devolver un valor
+  ProjectAutomatas.vcxproj -> C:\Users\L440\source\repos\ProjectAutomatas\Debug\ProjectAutomatas.exe
+  ProjectAutomatas.vcxproj -> C:\Users\L440\source\repos\ProjectAutomatas\Debug\ProjectAutomatas.pdb (Partial PDB)

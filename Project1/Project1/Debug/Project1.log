@@ -1,0 +1,6 @@
+﻿  YAC.c
+FLEX.h(1607): warning C4013: 'isatty' sin definir; se supone que extern devuelve como resultado int
+BISON.y(77): warning C4013: 'agregar' sin definir; se supone que extern devuelve como resultado int
+YAC.c(1671): warning C4013: 'yyerror' sin definir; se supone que extern devuelve como resultado int
+BISON.y(147): error C2371: 'agregar': nueva definición; tipos básicos distintos
+BISON.y(167): error C2371: 'agregar': nueva definición; tipos básicos distintos

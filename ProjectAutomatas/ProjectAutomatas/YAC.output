@@ -1,0 +1,1786 @@
+Terminals unused in grammar
+
+   CLASS
+   STRUCT
+   LLAVEIZ
+   LLAVEDER
+
+
+Rules useless in parser due to conflicts
+
+    8 INICIOS: /* empty */
+
+
+State 0 conflicts: 12 shift/reduce, 1 reduce/reduce
+State 2 conflicts: 1 shift/reduce
+State 3 conflicts: 1 shift/reduce
+State 4 conflicts: 1 shift/reduce
+State 5 conflicts: 1 shift/reduce
+State 6 conflicts: 1 shift/reduce
+State 7 conflicts: 1 shift/reduce
+State 8 conflicts: 1 shift/reduce
+State 14 conflicts: 12 shift/reduce, 1 reduce/reduce
+State 64 conflicts: 1 shift/reduce
+State 65 conflicts: 1 shift/reduce
+State 74 conflicts: 1 shift/reduce
+
+
+Grammar
+
+    0 $accept: S $end
+
+    1 S: /* empty */
+    2  | INICIOS S
+
+    3 INICIOS: FUNCIONES
+    4        | IFYCICLO
+    5        | DECLARACION
+    6        | ASIGNACION
+    7        | error PUNTOCOMA
+    8        | /* empty */
+
+    9 VARIABLE: INT
+   10         | DOUBLE
+   11         | FLOAT
+   12         | STRING
+   13         | CHAR
+   14         | VOID
+   15         | BOOLEAN
+
+   16 FUNCIONES: VARIABLE ID PARENTESISIZ PARENTESISDER
+   17          | VARIABLE ID PARENTESISIZ VARIABLE ID PARAMETROS PARENTESISDER
+   18          | ID PARENTESISIZ ID PARAMETROS PARENTESISDER PUNTOCOMA
+   19          | ID PARENTESISIZ PARENTESISDER PUNTOCOMA
+
+   20 DECLARACION: VARIABLE BRACKETIZ BRACKETDER ID VAR PUNTOCOMA
+   21            | INT ID VAR PUNTOCOMA
+   22            | DOUBLE ID VAR PUNTOCOMA
+   23            | FLOAT ID VAR PUNTOCOMA
+   24            | STRING ID VAR PUNTOCOMA
+   25            | CHAR ID VAR PUNTOCOMA
+   26            | VOID ID VAR PUNTOCOMA
+   27            | BOOLEAN ID VAR PUNTOCOMA
+   28            | INT ID IGUAL ENTERO PUNTOCOMA
+   29            | INT ID IGUAL EXPARIT PUNTOCOMA
+   30            | DOUBLE ID IGUAL DECIMAL PUNTOCOMA
+   31            | FLOAT ID IGUAL DECIMAL PUNTOCOMA
+   32            | STRING ID IGUAL CADENA PUNTOCOMA
+   33            | CHAR ID IGUAL CARACTER PUNTOCOMA
+   34            | BOOLEAN ID IGUAL BOOL PUNTOCOMA
+
+   35 ASIGNACION: ID IGUAL ENTERO PUNTOCOMA
+   36           | ID IGUAL EXPARIT PUNTOCOMA
+   37           | ID IGUAL DECIMAL PUNTOCOMA
+   38           | ID IGUAL CADENA PUNTOCOMA
+   39           | ID IGUAL CARACTER PUNTOCOMA
+   40           | ID IGUAL BOOL PUNTOCOMA
+
+   41 BOOL: TRUE
+   42     | FALSE
+
+   43 PARAMETROS: /* empty */
+   44           | COMA VARIABLE ID PARAMETROS
+   45           | COMA ID PARAMETROS
+
+   46 VAR: /* empty */
+   47    | COMA ID VAR
+
+   48 OPERACION: MAS
+   49          | MENOS
+   50          | ASTERISCO
+   51          | DIAGONAL
+   52          | PORCENTAJE
+
+   53 EXPARIT: NUMERO OPERACION EXPARIT
+   54        | ID OPERACION EXPARIT
+   55        | ID
+   56        | NUMERO
+
+   57 NUMERO: /* empty */
+   58       | ENTERO
+   59       | DECIMAL
+
+   60 CONDICIONES: MAYORQUE
+   61            | MENORQUE
+   62            | IGUALDAD
+   63            | DIFERENTEDE
+   64            | MAYORQUE IGUAL
+   65            | MENORQUE IGUAL
+
+   66 OPERADORBOOL: AND
+   67             | OR
+
+   68 CONDAUX: /* empty */
+   69        | OPERADORBOOL CONDICION
+
+   70 CONDICION: ID CONDICIONES NUMERO CONDAUX
+   71          | ID CONDICIONES ID CONDAUX
+   72          | NUMERO CONDICIONES NUMERO CONDAUX
+   73          | NUMERO CONDICIONES ID CONDAUX
+   74          | ID CONDAUX
+   75          | EXCLAMACION ID CONDAUX
+
+   76 IFYCICLO: IF PARENTESISIZ CONDICION PARENTESISDER
+   77         | WHILE PARENTESISIZ CONDICION PARENTESISDER
+   78         | FOR PARENTESISIZ INT ID IGUAL ENTERO PUNTOCOMA CONDICION PUNTOCOMA ID MAS MAS PARENTESISDER
+
+
+Terminals, with rules where they appear
+
+$end (0) 0
+error (256) 7
+INT (258) 9 21 28 29 78
+DOUBLE (259) 10 22 30
+FLOAT (260) 11 23 31
+STRING (261) 12 24 32
+VOID (262) 14 26
+BOOLEAN (263) 15 27 34
+CHAR (264) 13 25 33
+CLASS (265)
+STRUCT (266)
+FOR (267) 78
+WHILE (268) 77
+IF (269) 76
+TRUE (270) 41
+FALSE (271) 42
+ID (272) 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35
+    36 37 38 39 40 44 45 47 54 55 70 71 73 74 75 78
+ENTERO (273) 28 35 58 78
+DECIMAL (274) 30 31 37 59
+CADENA (275) 32 38
+CARACTER (276) 33 39
+PARENTESISIZ (277) 16 17 18 19 76 77 78
+PARENTESISDER (278) 16 17 18 19 76 77 78
+LLAVEIZ (279)
+LLAVEDER (280)
+BRACKETIZ (281) 20
+BRACKETDER (282) 20
+COMA (283) 44 45 47
+PUNTOCOMA (284) 7 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34
+    35 36 37 38 39 40 78
+IGUAL (285) 28 29 30 31 32 33 34 35 36 37 38 39 40 64 65 78
+ASTERISCO (286) 50
+DIAGONAL (287) 51
+MAS (288) 48 78
+MENOS (289) 49
+PORCENTAJE (290) 52
+EXCLAMACION (291) 75
+IGUALDAD (292) 62
+DIFERENTEDE (293) 63
+MAYORQUE (294) 60 64
+MENORQUE (295) 61 65
+AND (296) 66
+OR (297) 67
+
+
+Nonterminals, with rules where they appear
+
+$accept (43)
+    on left: 0
+S (44)
+    on left: 1 2, on right: 0 2
+INICIOS (45)
+    on left: 3 4 5 6 7 8, on right: 2
+VARIABLE (46)
+    on left: 9 10 11 12 13 14 15, on right: 16 17 20 44
+FUNCIONES (47)
+    on left: 16 17 18 19, on right: 3
+DECLARACION (48)
+    on left: 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34, on right:
+    5
+ASIGNACION (49)
+    on left: 35 36 37 38 39 40, on right: 6
+BOOL (50)
+    on left: 41 42, on right: 34 40
+PARAMETROS (51)
+    on left: 43 44 45, on right: 17 18 44 45
+VAR (52)
+    on left: 46 47, on right: 20 21 22 23 24 25 26 27 47
+OPERACION (53)
+    on left: 48 49 50 51 52, on right: 53 54
+EXPARIT (54)
+    on left: 53 54 55 56, on right: 29 36 53 54
+NUMERO (55)
+    on left: 57 58 59, on right: 53 56 70 72 73
+CONDICIONES (56)
+    on left: 60 61 62 63 64 65, on right: 70 71 72 73
+OPERADORBOOL (57)
+    on left: 66 67, on right: 69
+CONDAUX (58)
+    on left: 68 69, on right: 70 71 72 73 74 75
+CONDICION (59)
+    on left: 70 71 72 73 74 75, on right: 69 76 77 78
+IFYCICLO (60)
+    on left: 76 77 78, on right: 4
+
+
+State 0
+
+    0 $accept: . S $end
+
+    error    shift, and go to state 1
+    INT      shift, and go to state 2
+    DOUBLE   shift, and go to state 3
+    FLOAT    shift, and go to state 4
+    STRING   shift, and go to state 5
+    VOID     shift, and go to state 6
+    BOOLEAN  shift, and go to state 7
+    CHAR     shift, and go to state 8
+    FOR      shift, and go to state 9
+    WHILE    shift, and go to state 10
+    IF       shift, and go to state 11
+    ID       shift, and go to state 12
+
+    $end     reduce using rule 1 (S)
+    $end     [reduce using rule 8 (INICIOS)]
+    error    [reduce using rule 8 (INICIOS)]
+    INT      [reduce using rule 8 (INICIOS)]
+    DOUBLE   [reduce using rule 8 (INICIOS)]
+    FLOAT    [reduce using rule 8 (INICIOS)]
+    STRING   [reduce using rule 8 (INICIOS)]
+    VOID     [reduce using rule 8 (INICIOS)]
+    BOOLEAN  [reduce using rule 8 (INICIOS)]
+    CHAR     [reduce using rule 8 (INICIOS)]
+    FOR      [reduce using rule 8 (INICIOS)]
+    WHILE    [reduce using rule 8 (INICIOS)]
+    IF       [reduce using rule 8 (INICIOS)]
+    ID       [reduce using rule 8 (INICIOS)]
+
+    S            go to state 13
+    INICIOS      go to state 14
+    VARIABLE     go to state 15
+    FUNCIONES    go to state 16
+    DECLARACION  go to state 17
+    ASIGNACION   go to state 18
+    IFYCICLO     go to state 19
+
+
+State 1
+
+    7 INICIOS: error . PUNTOCOMA
+
+    PUNTOCOMA  shift, and go to state 20
+
+
+State 2
+
+    9 VARIABLE: INT .
+   21 DECLARACION: INT . ID VAR PUNTOCOMA
+   28            | INT . ID IGUAL ENTERO PUNTOCOMA
+   29            | INT . ID IGUAL EXPARIT PUNTOCOMA
+
+    ID  shift, and go to state 21
+
+    ID        [reduce using rule 9 (VARIABLE)]
+    $default  reduce using rule 9 (VARIABLE)
+
+
+State 3
+
+   10 VARIABLE: DOUBLE .
+   22 DECLARACION: DOUBLE . ID VAR PUNTOCOMA
+   30            | DOUBLE . ID IGUAL DECIMAL PUNTOCOMA
+
+    ID  shift, and go to state 22
+
+    ID        [reduce using rule 10 (VARIABLE)]
+    $default  reduce using rule 10 (VARIABLE)
+
+
+State 4
+
+   11 VARIABLE: FLOAT .
+   23 DECLARACION: FLOAT . ID VAR PUNTOCOMA
+   31            | FLOAT . ID IGUAL DECIMAL PUNTOCOMA
+
+    ID  shift, and go to state 23
+
+    ID        [reduce using rule 11 (VARIABLE)]
+    $default  reduce using rule 11 (VARIABLE)
+
+
+State 5
+
+   12 VARIABLE: STRING .
+   24 DECLARACION: STRING . ID VAR PUNTOCOMA
+   32            | STRING . ID IGUAL CADENA PUNTOCOMA
+
+    ID  shift, and go to state 24
+
+    ID        [reduce using rule 12 (VARIABLE)]
+    $default  reduce using rule 12 (VARIABLE)
+
+
+State 6
+
+   14 VARIABLE: VOID .
+   26 DECLARACION: VOID . ID VAR PUNTOCOMA
+
+    ID  shift, and go to state 25
+
+    ID        [reduce using rule 14 (VARIABLE)]
+    $default  reduce using rule 14 (VARIABLE)
+
+
+State 7
+
+   15 VARIABLE: BOOLEAN .
+   27 DECLARACION: BOOLEAN . ID VAR PUNTOCOMA
+   34            | BOOLEAN . ID IGUAL BOOL PUNTOCOMA
+
+    ID  shift, and go to state 26
+
+    ID        [reduce using rule 15 (VARIABLE)]
+    $default  reduce using rule 15 (VARIABLE)
+
+
+State 8
+
+   13 VARIABLE: CHAR .
+   25 DECLARACION: CHAR . ID VAR PUNTOCOMA
+   33            | CHAR . ID IGUAL CARACTER PUNTOCOMA
+
+    ID  shift, and go to state 27
+
+    ID        [reduce using rule 13 (VARIABLE)]
+    $default  reduce using rule 13 (VARIABLE)
+
+
+State 9
+
+   78 IFYCICLO: FOR . PARENTESISIZ INT ID IGUAL ENTERO PUNTOCOMA CONDICION PUNTOCOMA ID MAS MAS PARENTESISDER
+
+    PARENTESISIZ  shift, and go to state 28
+
+
+State 10
+
+   77 IFYCICLO: WHILE . PARENTESISIZ CONDICION PARENTESISDER
+
+    PARENTESISIZ  shift, and go to state 29
+
+
+State 11
+
+   76 IFYCICLO: IF . PARENTESISIZ CONDICION PARENTESISDER
+
+    PARENTESISIZ  shift, and go to state 30
+
+
+State 12
+
+   18 FUNCIONES: ID . PARENTESISIZ ID PARAMETROS PARENTESISDER PUNTOCOMA
+   19          | ID . PARENTESISIZ PARENTESISDER PUNTOCOMA
+   35 ASIGNACION: ID . IGUAL ENTERO PUNTOCOMA
+   36           | ID . IGUAL EXPARIT PUNTOCOMA
+   37           | ID . IGUAL DECIMAL PUNTOCOMA
+   38           | ID . IGUAL CADENA PUNTOCOMA
+   39           | ID . IGUAL CARACTER PUNTOCOMA
+   40           | ID . IGUAL BOOL PUNTOCOMA
+
+    PARENTESISIZ  shift, and go to state 31
+    IGUAL         shift, and go to state 32
+
+
+State 13
+
+    0 $accept: S . $end
+
+    $end  shift, and go to state 33
+
+
+State 14
+
+    2 S: INICIOS . S
+
+    error    shift, and go to state 1
+    INT      shift, and go to state 2
+    DOUBLE   shift, and go to state 3
+    FLOAT    shift, and go to state 4
+    STRING   shift, and go to state 5
+    VOID     shift, and go to state 6
+    BOOLEAN  shift, and go to state 7
+    CHAR     shift, and go to state 8
+    FOR      shift, and go to state 9
+    WHILE    shift, and go to state 10
+    IF       shift, and go to state 11
+    ID       shift, and go to state 12
+
+    $end     reduce using rule 1 (S)
+    $end     [reduce using rule 8 (INICIOS)]
+    error    [reduce using rule 8 (INICIOS)]
+    INT      [reduce using rule 8 (INICIOS)]
+    DOUBLE   [reduce using rule 8 (INICIOS)]
+    FLOAT    [reduce using rule 8 (INICIOS)]
+    STRING   [reduce using rule 8 (INICIOS)]
+    VOID     [reduce using rule 8 (INICIOS)]
+    BOOLEAN  [reduce using rule 8 (INICIOS)]
+    CHAR     [reduce using rule 8 (INICIOS)]
+    FOR      [reduce using rule 8 (INICIOS)]
+    WHILE    [reduce using rule 8 (INICIOS)]
+    IF       [reduce using rule 8 (INICIOS)]
+    ID       [reduce using rule 8 (INICIOS)]
+
+    S            go to state 34
+    INICIOS      go to state 14
+    VARIABLE     go to state 15
+    FUNCIONES    go to state 16
+    DECLARACION  go to state 17
+    ASIGNACION   go to state 18
+    IFYCICLO     go to state 19
+
+
+State 15
+
+   16 FUNCIONES: VARIABLE . ID PARENTESISIZ PARENTESISDER
+   17          | VARIABLE . ID PARENTESISIZ VARIABLE ID PARAMETROS PARENTESISDER
+   20 DECLARACION: VARIABLE . BRACKETIZ BRACKETDER ID VAR PUNTOCOMA
+
+    ID         shift, and go to state 35
+    BRACKETIZ  shift, and go to state 36
+
+
+State 16
+
+    3 INICIOS: FUNCIONES .
+
+    $default  reduce using rule 3 (INICIOS)
+
+
+State 17
+
+    5 INICIOS: DECLARACION .
+
+    $default  reduce using rule 5 (INICIOS)
+
+
+State 18
+
+    6 INICIOS: ASIGNACION .
+
+    $default  reduce using rule 6 (INICIOS)
+
+
+State 19
+
+    4 INICIOS: IFYCICLO .
+
+    $default  reduce using rule 4 (INICIOS)
+
+
+State 20
+
+    7 INICIOS: error PUNTOCOMA .
+
+    $default  reduce using rule 7 (INICIOS)
+
+
+State 21
+
+   21 DECLARACION: INT ID . VAR PUNTOCOMA
+   28            | INT ID . IGUAL ENTERO PUNTOCOMA
+   29            | INT ID . IGUAL EXPARIT PUNTOCOMA
+
+    COMA   shift, and go to state 37
+    IGUAL  shift, and go to state 38
+
+    $default  reduce using rule 46 (VAR)
+
+    VAR  go to state 39
+
+
+State 22
+
+   22 DECLARACION: DOUBLE ID . VAR PUNTOCOMA
+   30            | DOUBLE ID . IGUAL DECIMAL PUNTOCOMA
+
+    COMA   shift, and go to state 37
+    IGUAL  shift, and go to state 40
+
+    $default  reduce using rule 46 (VAR)
+
+    VAR  go to state 41
+
+
+State 23
+
+   23 DECLARACION: FLOAT ID . VAR PUNTOCOMA
+   31            | FLOAT ID . IGUAL DECIMAL PUNTOCOMA
+
+    COMA   shift, and go to state 37
+    IGUAL  shift, and go to state 42
+
+    $default  reduce using rule 46 (VAR)
+
+    VAR  go to state 43
+
+
+State 24
+
+   24 DECLARACION: STRING ID . VAR PUNTOCOMA
+   32            | STRING ID . IGUAL CADENA PUNTOCOMA
+
+    COMA   shift, and go to state 37
+    IGUAL  shift, and go to state 44
+
+    $default  reduce using rule 46 (VAR)
+
+    VAR  go to state 45
+
+
+State 25
+
+   26 DECLARACION: VOID ID . VAR PUNTOCOMA
+
+    COMA  shift, and go to state 37
+
+    $default  reduce using rule 46 (VAR)
+
+    VAR  go to state 46
+
+
+State 26
+
+   27 DECLARACION: BOOLEAN ID . VAR PUNTOCOMA
+   34            | BOOLEAN ID . IGUAL BOOL PUNTOCOMA
+
+    COMA   shift, and go to state 37
+    IGUAL  shift, and go to state 47
+
+    $default  reduce using rule 46 (VAR)
+
+    VAR  go to state 48
+
+
+State 27
+
+   25 DECLARACION: CHAR ID . VAR PUNTOCOMA
+   33            | CHAR ID . IGUAL CARACTER PUNTOCOMA
+
+    COMA   shift, and go to state 37
+    IGUAL  shift, and go to state 49
+
+    $default  reduce using rule 46 (VAR)
+
+    VAR  go to state 50
+
+
+State 28
+
+   78 IFYCICLO: FOR PARENTESISIZ . INT ID IGUAL ENTERO PUNTOCOMA CONDICION PUNTOCOMA ID MAS MAS PARENTESISDER
+
+    INT  shift, and go to state 51
+
+
+State 29
+
+   77 IFYCICLO: WHILE PARENTESISIZ . CONDICION PARENTESISDER
+
+    ID           shift, and go to state 52
+    ENTERO       shift, and go to state 53
+    DECIMAL      shift, and go to state 54
+    EXCLAMACION  shift, and go to state 55
+
+    $default  reduce using rule 57 (NUMERO)
+
+    NUMERO     go to state 56
+    CONDICION  go to state 57
+
+
+State 30
+
+   76 IFYCICLO: IF PARENTESISIZ . CONDICION PARENTESISDER
+
+    ID           shift, and go to state 52
+    ENTERO       shift, and go to state 53
+    DECIMAL      shift, and go to state 54
+    EXCLAMACION  shift, and go to state 55
+
+    $default  reduce using rule 57 (NUMERO)
+
+    NUMERO     go to state 56
+    CONDICION  go to state 58
+
+
+State 31
+
+   18 FUNCIONES: ID PARENTESISIZ . ID PARAMETROS PARENTESISDER PUNTOCOMA
+   19          | ID PARENTESISIZ . PARENTESISDER PUNTOCOMA
+
+    ID             shift, and go to state 59
+    PARENTESISDER  shift, and go to state 60
+
+
+State 32
+
+   35 ASIGNACION: ID IGUAL . ENTERO PUNTOCOMA
+   36           | ID IGUAL . EXPARIT PUNTOCOMA
+   37           | ID IGUAL . DECIMAL PUNTOCOMA
+   38           | ID IGUAL . CADENA PUNTOCOMA
+   39           | ID IGUAL . CARACTER PUNTOCOMA
+   40           | ID IGUAL . BOOL PUNTOCOMA
+
+    TRUE      shift, and go to state 61
+    FALSE     shift, and go to state 62
+    ID        shift, and go to state 63
+    ENTERO    shift, and go to state 64
+    DECIMAL   shift, and go to state 65
+    CADENA    shift, and go to state 66
+    CARACTER  shift, and go to state 67
+
+    $default  reduce using rule 57 (NUMERO)
+
+    BOOL     go to state 68
+    EXPARIT  go to state 69
+    NUMERO   go to state 70
+
+
+State 33
+
+    0 $accept: S $end .
+
+    $default  accept
+
+
+State 34
+
+    2 S: INICIOS S .
+
+    $default  reduce using rule 2 (S)
+
+
+State 35
+
+   16 FUNCIONES: VARIABLE ID . PARENTESISIZ PARENTESISDER
+   17          | VARIABLE ID . PARENTESISIZ VARIABLE ID PARAMETROS PARENTESISDER
+
+    PARENTESISIZ  shift, and go to state 71
+
+
+State 36
+
+   20 DECLARACION: VARIABLE BRACKETIZ . BRACKETDER ID VAR PUNTOCOMA
+
+    BRACKETDER  shift, and go to state 72
+
+
+State 37
+
+   47 VAR: COMA . ID VAR
+
+    ID  shift, and go to state 73
+
+
+State 38
+
+   28 DECLARACION: INT ID IGUAL . ENTERO PUNTOCOMA
+   29            | INT ID IGUAL . EXPARIT PUNTOCOMA
+
+    ID       shift, and go to state 63
+    ENTERO   shift, and go to state 74
+    DECIMAL  shift, and go to state 54
+
+    $default  reduce using rule 57 (NUMERO)
+
+    EXPARIT  go to state 75
+    NUMERO   go to state 70
+
+
+State 39
+
+   21 DECLARACION: INT ID VAR . PUNTOCOMA
+
+    PUNTOCOMA  shift, and go to state 76
+
+
+State 40
+
+   30 DECLARACION: DOUBLE ID IGUAL . DECIMAL PUNTOCOMA
+
+    DECIMAL  shift, and go to state 77
+
+
+State 41
+
+   22 DECLARACION: DOUBLE ID VAR . PUNTOCOMA
+
+    PUNTOCOMA  shift, and go to state 78
+
+
+State 42
+
+   31 DECLARACION: FLOAT ID IGUAL . DECIMAL PUNTOCOMA
+
+    DECIMAL  shift, and go to state 79
+
+
+State 43
+
+   23 DECLARACION: FLOAT ID VAR . PUNTOCOMA
+
+    PUNTOCOMA  shift, and go to state 80
+
+
+State 44
+
+   32 DECLARACION: STRING ID IGUAL . CADENA PUNTOCOMA
+
+    CADENA  shift, and go to state 81
+
+
+State 45
+
+   24 DECLARACION: STRING ID VAR . PUNTOCOMA
+
+    PUNTOCOMA  shift, and go to state 82
+
+
+State 46
+
+   26 DECLARACION: VOID ID VAR . PUNTOCOMA
+
+    PUNTOCOMA  shift, and go to state 83
+
+
+State 47
+
+   34 DECLARACION: BOOLEAN ID IGUAL . BOOL PUNTOCOMA
+
+    TRUE   shift, and go to state 61
+    FALSE  shift, and go to state 62
+
+    BOOL  go to state 84
+
+
+State 48
+
+   27 DECLARACION: BOOLEAN ID VAR . PUNTOCOMA
+
+    PUNTOCOMA  shift, and go to state 85
+
+
+State 49
+
+   33 DECLARACION: CHAR ID IGUAL . CARACTER PUNTOCOMA
+
+    CARACTER  shift, and go to state 86
+
+
+State 50
+
+   25 DECLARACION: CHAR ID VAR . PUNTOCOMA
+
+    PUNTOCOMA  shift, and go to state 87
+
+
+State 51
+
+   78 IFYCICLO: FOR PARENTESISIZ INT . ID IGUAL ENTERO PUNTOCOMA CONDICION PUNTOCOMA ID MAS MAS PARENTESISDER
+
+    ID  shift, and go to state 88
+
+
+State 52
+
+   70 CONDICION: ID . CONDICIONES NUMERO CONDAUX
+   71          | ID . CONDICIONES ID CONDAUX
+   74          | ID . CONDAUX
+
+    IGUALDAD     shift, and go to state 89
+    DIFERENTEDE  shift, and go to state 90
+    MAYORQUE     shift, and go to state 91
+    MENORQUE     shift, and go to state 92
+    AND          shift, and go to state 93
+    OR           shift, and go to state 94
+
+    $default  reduce using rule 68 (CONDAUX)
+
+    CONDICIONES   go to state 95
+    OPERADORBOOL  go to state 96
+    CONDAUX       go to state 97
+
+
+State 53
+
+   58 NUMERO: ENTERO .
+
+    $default  reduce using rule 58 (NUMERO)
+
+
+State 54
+
+   59 NUMERO: DECIMAL .
+
+    $default  reduce using rule 59 (NUMERO)
+
+
+State 55
+
+   75 CONDICION: EXCLAMACION . ID CONDAUX
+
+    ID  shift, and go to state 98
+
+
+State 56
+
+   72 CONDICION: NUMERO . CONDICIONES NUMERO CONDAUX
+   73          | NUMERO . CONDICIONES ID CONDAUX
+
+    IGUALDAD     shift, and go to state 89
+    DIFERENTEDE  shift, and go to state 90
+    MAYORQUE     shift, and go to state 91
+    MENORQUE     shift, and go to state 92
+
+    CONDICIONES  go to state 99
+
+
+State 57
+
+   77 IFYCICLO: WHILE PARENTESISIZ CONDICION . PARENTESISDER
+
+    PARENTESISDER  shift, and go to state 100
+
+
+State 58
+
+   76 IFYCICLO: IF PARENTESISIZ CONDICION . PARENTESISDER
+
+    PARENTESISDER  shift, and go to state 101
+
+
+State 59
+
+   18 FUNCIONES: ID PARENTESISIZ ID . PARAMETROS PARENTESISDER PUNTOCOMA
+
+    COMA  shift, and go to state 102
+
+    $default  reduce using rule 43 (PARAMETROS)
+
+    PARAMETROS  go to state 103
+
+
+State 60
+
+   19 FUNCIONES: ID PARENTESISIZ PARENTESISDER . PUNTOCOMA
+
+    PUNTOCOMA  shift, and go to state 104
+
+
+State 61
+
+   41 BOOL: TRUE .
+
+    $default  reduce using rule 41 (BOOL)
+
+
+State 62
+
+   42 BOOL: FALSE .
+
+    $default  reduce using rule 42 (BOOL)
+
+
+State 63
+
+   54 EXPARIT: ID . OPERACION EXPARIT
+   55        | ID .
+
+    ASTERISCO   shift, and go to state 105
+    DIAGONAL    shift, and go to state 106
+    MAS         shift, and go to state 107
+    MENOS       shift, and go to state 108
+    PORCENTAJE  shift, and go to state 109
+
+    $default  reduce using rule 55 (EXPARIT)
+
+    OPERACION  go to state 110
+
+
+State 64
+
+   35 ASIGNACION: ID IGUAL ENTERO . PUNTOCOMA
+   58 NUMERO: ENTERO .
+
+    PUNTOCOMA  shift, and go to state 111
+
+    PUNTOCOMA  [reduce using rule 58 (NUMERO)]
+    $default   reduce using rule 58 (NUMERO)
+
+
+State 65
+
+   37 ASIGNACION: ID IGUAL DECIMAL . PUNTOCOMA
+   59 NUMERO: DECIMAL .
+
+    PUNTOCOMA  shift, and go to state 112
+
+    PUNTOCOMA  [reduce using rule 59 (NUMERO)]
+    $default   reduce using rule 59 (NUMERO)
+
+
+State 66
+
+   38 ASIGNACION: ID IGUAL CADENA . PUNTOCOMA
+
+    PUNTOCOMA  shift, and go to state 113
+
+
+State 67
+
+   39 ASIGNACION: ID IGUAL CARACTER . PUNTOCOMA
+
+    PUNTOCOMA  shift, and go to state 114
+
+
+State 68
+
+   40 ASIGNACION: ID IGUAL BOOL . PUNTOCOMA
+
+    PUNTOCOMA  shift, and go to state 115
+
+
+State 69
+
+   36 ASIGNACION: ID IGUAL EXPARIT . PUNTOCOMA
+
+    PUNTOCOMA  shift, and go to state 116
+
+
+State 70
+
+   53 EXPARIT: NUMERO . OPERACION EXPARIT
+   56        | NUMERO .
+
+    ASTERISCO   shift, and go to state 105
+    DIAGONAL    shift, and go to state 106
+    MAS         shift, and go to state 107
+    MENOS       shift, and go to state 108
+    PORCENTAJE  shift, and go to state 109
+
+    $default  reduce using rule 56 (EXPARIT)
+
+    OPERACION  go to state 117
+
+
+State 71
+
+   16 FUNCIONES: VARIABLE ID PARENTESISIZ . PARENTESISDER
+   17          | VARIABLE ID PARENTESISIZ . VARIABLE ID PARAMETROS PARENTESISDER
+
+    INT            shift, and go to state 118
+    DOUBLE         shift, and go to state 119
+    FLOAT          shift, and go to state 120
+    STRING         shift, and go to state 121
+    VOID           shift, and go to state 122
+    BOOLEAN        shift, and go to state 123
+    CHAR           shift, and go to state 124
+    PARENTESISDER  shift, and go to state 125
+
+    VARIABLE  go to state 126
+
+
+State 72
+
+   20 DECLARACION: VARIABLE BRACKETIZ BRACKETDER . ID VAR PUNTOCOMA
+
+    ID  shift, and go to state 127
+
+
+State 73
+
+   47 VAR: COMA ID . VAR
+
+    COMA  shift, and go to state 37
+
+    $default  reduce using rule 46 (VAR)
+
+    VAR  go to state 128
+
+
+State 74
+
+   28 DECLARACION: INT ID IGUAL ENTERO . PUNTOCOMA
+   58 NUMERO: ENTERO .
+
+    PUNTOCOMA  shift, and go to state 129
+
+    PUNTOCOMA  [reduce using rule 58 (NUMERO)]
+    $default   reduce using rule 58 (NUMERO)
+
+
+State 75
+
+   29 DECLARACION: INT ID IGUAL EXPARIT . PUNTOCOMA
+
+    PUNTOCOMA  shift, and go to state 130
+
+
+State 76
+
+   21 DECLARACION: INT ID VAR PUNTOCOMA .
+
+    $default  reduce using rule 21 (DECLARACION)
+
+
+State 77
+
+   30 DECLARACION: DOUBLE ID IGUAL DECIMAL . PUNTOCOMA
+
+    PUNTOCOMA  shift, and go to state 131
+
+
+State 78
+
+   22 DECLARACION: DOUBLE ID VAR PUNTOCOMA .
+
+    $default  reduce using rule 22 (DECLARACION)
+
+
+State 79
+
+   31 DECLARACION: FLOAT ID IGUAL DECIMAL . PUNTOCOMA
+
+    PUNTOCOMA  shift, and go to state 132
+
+
+State 80
+
+   23 DECLARACION: FLOAT ID VAR PUNTOCOMA .
+
+    $default  reduce using rule 23 (DECLARACION)
+
+
+State 81
+
+   32 DECLARACION: STRING ID IGUAL CADENA . PUNTOCOMA
+
+    PUNTOCOMA  shift, and go to state 133
+
+
+State 82
+
+   24 DECLARACION: STRING ID VAR PUNTOCOMA .
+
+    $default  reduce using rule 24 (DECLARACION)
+
+
+State 83
+
+   26 DECLARACION: VOID ID VAR PUNTOCOMA .
+
+    $default  reduce using rule 26 (DECLARACION)
+
+
+State 84
+
+   34 DECLARACION: BOOLEAN ID IGUAL BOOL . PUNTOCOMA
+
+    PUNTOCOMA  shift, and go to state 134
+
+
+State 85
+
+   27 DECLARACION: BOOLEAN ID VAR PUNTOCOMA .
+
+    $default  reduce using rule 27 (DECLARACION)
+
+
+State 86
+
+   33 DECLARACION: CHAR ID IGUAL CARACTER . PUNTOCOMA
+
+    PUNTOCOMA  shift, and go to state 135
+
+
+State 87
+
+   25 DECLARACION: CHAR ID VAR PUNTOCOMA .
+
+    $default  reduce using rule 25 (DECLARACION)
+
+
+State 88
+
+   78 IFYCICLO: FOR PARENTESISIZ INT ID . IGUAL ENTERO PUNTOCOMA CONDICION PUNTOCOMA ID MAS MAS PARENTESISDER
+
+    IGUAL  shift, and go to state 136
+
+
+State 89
+
+   62 CONDICIONES: IGUALDAD .
+
+    $default  reduce using rule 62 (CONDICIONES)
+
+
+State 90
+
+   63 CONDICIONES: DIFERENTEDE .
+
+    $default  reduce using rule 63 (CONDICIONES)
+
+
+State 91
+
+   60 CONDICIONES: MAYORQUE .
+   64            | MAYORQUE . IGUAL
+
+    IGUAL  shift, and go to state 137
+
+    $default  reduce using rule 60 (CONDICIONES)
+
+
+State 92
+
+   61 CONDICIONES: MENORQUE .
+   65            | MENORQUE . IGUAL
+
+    IGUAL  shift, and go to state 138
+
+    $default  reduce using rule 61 (CONDICIONES)
+
+
+State 93
+
+   66 OPERADORBOOL: AND .
+
+    $default  reduce using rule 66 (OPERADORBOOL)
+
+
+State 94
+
+   67 OPERADORBOOL: OR .
+
+    $default  reduce using rule 67 (OPERADORBOOL)
+
+
+State 95
+
+   70 CONDICION: ID CONDICIONES . NUMERO CONDAUX
+   71          | ID CONDICIONES . ID CONDAUX
+
+    ID       shift, and go to state 139
+    ENTERO   shift, and go to state 53
+    DECIMAL  shift, and go to state 54
+
+    $default  reduce using rule 57 (NUMERO)
+
+    NUMERO  go to state 140
+
+
+State 96
+
+   69 CONDAUX: OPERADORBOOL . CONDICION
+
+    ID           shift, and go to state 52
+    ENTERO       shift, and go to state 53
+    DECIMAL      shift, and go to state 54
+    EXCLAMACION  shift, and go to state 55
+
+    $default  reduce using rule 57 (NUMERO)
+
+    NUMERO     go to state 56
+    CONDICION  go to state 141
+
+
+State 97
+
+   74 CONDICION: ID CONDAUX .
+
+    $default  reduce using rule 74 (CONDICION)
+
+
+State 98
+
+   75 CONDICION: EXCLAMACION ID . CONDAUX
+
+    AND  shift, and go to state 93
+    OR   shift, and go to state 94
+
+    $default  reduce using rule 68 (CONDAUX)
+
+    OPERADORBOOL  go to state 96
+    CONDAUX       go to state 142
+
+
+State 99
+
+   72 CONDICION: NUMERO CONDICIONES . NUMERO CONDAUX
+   73          | NUMERO CONDICIONES . ID CONDAUX
+
+    ID       shift, and go to state 143
+    ENTERO   shift, and go to state 53
+    DECIMAL  shift, and go to state 54
+
+    $default  reduce using rule 57 (NUMERO)
+
+    NUMERO  go to state 144
+
+
+State 100
+
+   77 IFYCICLO: WHILE PARENTESISIZ CONDICION PARENTESISDER .
+
+    $default  reduce using rule 77 (IFYCICLO)
+
+
+State 101
+
+   76 IFYCICLO: IF PARENTESISIZ CONDICION PARENTESISDER .
+
+    $default  reduce using rule 76 (IFYCICLO)
+
+
+State 102
+
+   44 PARAMETROS: COMA . VARIABLE ID PARAMETROS
+   45           | COMA . ID PARAMETROS
+
+    INT      shift, and go to state 118
+    DOUBLE   shift, and go to state 119
+    FLOAT    shift, and go to state 120
+    STRING   shift, and go to state 121
+    VOID     shift, and go to state 122
+    BOOLEAN  shift, and go to state 123
+    CHAR     shift, and go to state 124
+    ID       shift, and go to state 145
+
+    VARIABLE  go to state 146
+
+
+State 103
+
+   18 FUNCIONES: ID PARENTESISIZ ID PARAMETROS . PARENTESISDER PUNTOCOMA
+
+    PARENTESISDER  shift, and go to state 147
+
+
+State 104
+
+   19 FUNCIONES: ID PARENTESISIZ PARENTESISDER PUNTOCOMA .
+
+    $default  reduce using rule 19 (FUNCIONES)
+
+
+State 105
+
+   50 OPERACION: ASTERISCO .
+
+    $default  reduce using rule 50 (OPERACION)
+
+
+State 106
+
+   51 OPERACION: DIAGONAL .
+
+    $default  reduce using rule 51 (OPERACION)
+
+
+State 107
+
+   48 OPERACION: MAS .
+
+    $default  reduce using rule 48 (OPERACION)
+
+
+State 108
+
+   49 OPERACION: MENOS .
+
+    $default  reduce using rule 49 (OPERACION)
+
+
+State 109
+
+   52 OPERACION: PORCENTAJE .
+
+    $default  reduce using rule 52 (OPERACION)
+
+
+State 110
+
+   54 EXPARIT: ID OPERACION . EXPARIT
+
+    ID       shift, and go to state 63
+    ENTERO   shift, and go to state 53
+    DECIMAL  shift, and go to state 54
+
+    $default  reduce using rule 57 (NUMERO)
+
+    EXPARIT  go to state 148
+    NUMERO   go to state 70
+
+
+State 111
+
+   35 ASIGNACION: ID IGUAL ENTERO PUNTOCOMA .
+
+    $default  reduce using rule 35 (ASIGNACION)
+
+
+State 112
+
+   37 ASIGNACION: ID IGUAL DECIMAL PUNTOCOMA .
+
+    $default  reduce using rule 37 (ASIGNACION)
+
+
+State 113
+
+   38 ASIGNACION: ID IGUAL CADENA PUNTOCOMA .
+
+    $default  reduce using rule 38 (ASIGNACION)
+
+
+State 114
+
+   39 ASIGNACION: ID IGUAL CARACTER PUNTOCOMA .
+
+    $default  reduce using rule 39 (ASIGNACION)
+
+
+State 115
+
+   40 ASIGNACION: ID IGUAL BOOL PUNTOCOMA .
+
+    $default  reduce using rule 40 (ASIGNACION)
+
+
+State 116
+
+   36 ASIGNACION: ID IGUAL EXPARIT PUNTOCOMA .
+
+    $default  reduce using rule 36 (ASIGNACION)
+
+
+State 117
+
+   53 EXPARIT: NUMERO OPERACION . EXPARIT
+
+    ID       shift, and go to state 63
+    ENTERO   shift, and go to state 53
+    DECIMAL  shift, and go to state 54
+
+    $default  reduce using rule 57 (NUMERO)
+
+    EXPARIT  go to state 149
+    NUMERO   go to state 70
+
+
+State 118
+
+    9 VARIABLE: INT .
+
+    $default  reduce using rule 9 (VARIABLE)
+
+
+State 119
+
+   10 VARIABLE: DOUBLE .
+
+    $default  reduce using rule 10 (VARIABLE)
+
+
+State 120
+
+   11 VARIABLE: FLOAT .
+
+    $default  reduce using rule 11 (VARIABLE)
+
+
+State 121
+
+   12 VARIABLE: STRING .
+
+    $default  reduce using rule 12 (VARIABLE)
+
+
+State 122
+
+   14 VARIABLE: VOID .
+
+    $default  reduce using rule 14 (VARIABLE)
+
+
+State 123
+
+   15 VARIABLE: BOOLEAN .
+
+    $default  reduce using rule 15 (VARIABLE)
+
+
+State 124
+
+   13 VARIABLE: CHAR .
+
+    $default  reduce using rule 13 (VARIABLE)
+
+
+State 125
+
+   16 FUNCIONES: VARIABLE ID PARENTESISIZ PARENTESISDER .
+
+    $default  reduce using rule 16 (FUNCIONES)
+
+
+State 126
+
+   17 FUNCIONES: VARIABLE ID PARENTESISIZ VARIABLE . ID PARAMETROS PARENTESISDER
+
+    ID  shift, and go to state 150
+
+
+State 127
+
+   20 DECLARACION: VARIABLE BRACKETIZ BRACKETDER ID . VAR PUNTOCOMA
+
+    COMA  shift, and go to state 37
+
+    $default  reduce using rule 46 (VAR)
+
+    VAR  go to state 151
+
+
+State 128
+
+   47 VAR: COMA ID VAR .
+
+    $default  reduce using rule 47 (VAR)
+
+
+State 129
+
+   28 DECLARACION: INT ID IGUAL ENTERO PUNTOCOMA .
+
+    $default  reduce using rule 28 (DECLARACION)
+
+
+State 130
+
+   29 DECLARACION: INT ID IGUAL EXPARIT PUNTOCOMA .
+
+    $default  reduce using rule 29 (DECLARACION)
+
+
+State 131
+
+   30 DECLARACION: DOUBLE ID IGUAL DECIMAL PUNTOCOMA .
+
+    $default  reduce using rule 30 (DECLARACION)
+
+
+State 132
+
+   31 DECLARACION: FLOAT ID IGUAL DECIMAL PUNTOCOMA .
+
+    $default  reduce using rule 31 (DECLARACION)
+
+
+State 133
+
+   32 DECLARACION: STRING ID IGUAL CADENA PUNTOCOMA .
+
+    $default  reduce using rule 32 (DECLARACION)
+
+
+State 134
+
+   34 DECLARACION: BOOLEAN ID IGUAL BOOL PUNTOCOMA .
+
+    $default  reduce using rule 34 (DECLARACION)
+
+
+State 135
+
+   33 DECLARACION: CHAR ID IGUAL CARACTER PUNTOCOMA .
+
+    $default  reduce using rule 33 (DECLARACION)
+
+
+State 136
+
+   78 IFYCICLO: FOR PARENTESISIZ INT ID IGUAL . ENTERO PUNTOCOMA CONDICION PUNTOCOMA ID MAS MAS PARENTESISDER
+
+    ENTERO  shift, and go to state 152
+
+
+State 137
+
+   64 CONDICIONES: MAYORQUE IGUAL .
+
+    $default  reduce using rule 64 (CONDICIONES)
+
+
+State 138
+
+   65 CONDICIONES: MENORQUE IGUAL .
+
+    $default  reduce using rule 65 (CONDICIONES)
+
+
+State 139
+
+   71 CONDICION: ID CONDICIONES ID . CONDAUX
+
+    AND  shift, and go to state 93
+    OR   shift, and go to state 94
+
+    $default  reduce using rule 68 (CONDAUX)
+
+    OPERADORBOOL  go to state 96
+    CONDAUX       go to state 153
+
+
+State 140
+
+   70 CONDICION: ID CONDICIONES NUMERO . CONDAUX
+
+    AND  shift, and go to state 93
+    OR   shift, and go to state 94
+
+    $default  reduce using rule 68 (CONDAUX)
+
+    OPERADORBOOL  go to state 96
+    CONDAUX       go to state 154
+
+
+State 141
+
+   69 CONDAUX: OPERADORBOOL CONDICION .
+
+    $default  reduce using rule 69 (CONDAUX)
+
+
+State 142
+
+   75 CONDICION: EXCLAMACION ID CONDAUX .
+
+    $default  reduce using rule 75 (CONDICION)
+
+
+State 143
+
+   73 CONDICION: NUMERO CONDICIONES ID . CONDAUX
+
+    AND  shift, and go to state 93
+    OR   shift, and go to state 94
+
+    $default  reduce using rule 68 (CONDAUX)
+
+    OPERADORBOOL  go to state 96
+    CONDAUX       go to state 155
+
+
+State 144
+
+   72 CONDICION: NUMERO CONDICIONES NUMERO . CONDAUX
+
+    AND  shift, and go to state 93
+    OR   shift, and go to state 94
+
+    $default  reduce using rule 68 (CONDAUX)
+
+    OPERADORBOOL  go to state 96
+    CONDAUX       go to state 156
+
+
+State 145
+
+   45 PARAMETROS: COMA ID . PARAMETROS
+
+    COMA  shift, and go to state 102
+
+    $default  reduce using rule 43 (PARAMETROS)
+
+    PARAMETROS  go to state 157
+
+
+State 146
+
+   44 PARAMETROS: COMA VARIABLE . ID PARAMETROS
+
+    ID  shift, and go to state 158
+
+
+State 147
+
+   18 FUNCIONES: ID PARENTESISIZ ID PARAMETROS PARENTESISDER . PUNTOCOMA
+
+    PUNTOCOMA  shift, and go to state 159
+
+
+State 148
+
+   54 EXPARIT: ID OPERACION EXPARIT .
+
+    $default  reduce using rule 54 (EXPARIT)
+
+
+State 149
+
+   53 EXPARIT: NUMERO OPERACION EXPARIT .
+
+    $default  reduce using rule 53 (EXPARIT)
+
+
+State 150
+
+   17 FUNCIONES: VARIABLE ID PARENTESISIZ VARIABLE ID . PARAMETROS PARENTESISDER
+
+    COMA  shift, and go to state 102
+
+    $default  reduce using rule 43 (PARAMETROS)
+
+    PARAMETROS  go to state 160
+
+
+State 151
+
+   20 DECLARACION: VARIABLE BRACKETIZ BRACKETDER ID VAR . PUNTOCOMA
+
+    PUNTOCOMA  shift, and go to state 161
+
+
+State 152
+
+   78 IFYCICLO: FOR PARENTESISIZ INT ID IGUAL ENTERO . PUNTOCOMA CONDICION PUNTOCOMA ID MAS MAS PARENTESISDER
+
+    PUNTOCOMA  shift, and go to state 162
+
+
+State 153
+
+   71 CONDICION: ID CONDICIONES ID CONDAUX .
+
+    $default  reduce using rule 71 (CONDICION)
+
+
+State 154
+
+   70 CONDICION: ID CONDICIONES NUMERO CONDAUX .
+
+    $default  reduce using rule 70 (CONDICION)
+
+
+State 155
+
+   73 CONDICION: NUMERO CONDICIONES ID CONDAUX .
+
+    $default  reduce using rule 73 (CONDICION)
+
+
+State 156
+
+   72 CONDICION: NUMERO CONDICIONES NUMERO CONDAUX .
+
+    $default  reduce using rule 72 (CONDICION)
+
+
+State 157
+
+   45 PARAMETROS: COMA ID PARAMETROS .
+
+    $default  reduce using rule 45 (PARAMETROS)
+
+
+State 158
+
+   44 PARAMETROS: COMA VARIABLE ID . PARAMETROS
+
+    COMA  shift, and go to state 102
+
+    $default  reduce using rule 43 (PARAMETROS)
+
+    PARAMETROS  go to state 163
+
+
+State 159
+
+   18 FUNCIONES: ID PARENTESISIZ ID PARAMETROS PARENTESISDER PUNTOCOMA .
+
+    $default  reduce using rule 18 (FUNCIONES)
+
+
+State 160
+
+   17 FUNCIONES: VARIABLE ID PARENTESISIZ VARIABLE ID PARAMETROS . PARENTESISDER
+
+    PARENTESISDER  shift, and go to state 164
+
+
+State 161
+
+   20 DECLARACION: VARIABLE BRACKETIZ BRACKETDER ID VAR PUNTOCOMA .
+
+    $default  reduce using rule 20 (DECLARACION)
+
+
+State 162
+
+   78 IFYCICLO: FOR PARENTESISIZ INT ID IGUAL ENTERO PUNTOCOMA . CONDICION PUNTOCOMA ID MAS MAS PARENTESISDER
+
+    ID           shift, and go to state 52
+    ENTERO       shift, and go to state 53
+    DECIMAL      shift, and go to state 54
+    EXCLAMACION  shift, and go to state 55
+
+    $default  reduce using rule 57 (NUMERO)
+
+    NUMERO     go to state 56
+    CONDICION  go to state 165
+
+
+State 163
+
+   44 PARAMETROS: COMA VARIABLE ID PARAMETROS .
+
+    $default  reduce using rule 44 (PARAMETROS)
+
+
+State 164
+
+   17 FUNCIONES: VARIABLE ID PARENTESISIZ VARIABLE ID PARAMETROS PARENTESISDER .
+
+    $default  reduce using rule 17 (FUNCIONES)
+
+
+State 165
+
+   78 IFYCICLO: FOR PARENTESISIZ INT ID IGUAL ENTERO PUNTOCOMA CONDICION . PUNTOCOMA ID MAS MAS PARENTESISDER
+
+    PUNTOCOMA  shift, and go to state 166
+
+
+State 166
+
+   78 IFYCICLO: FOR PARENTESISIZ INT ID IGUAL ENTERO PUNTOCOMA CONDICION PUNTOCOMA . ID MAS MAS PARENTESISDER
+
+    ID  shift, and go to state 167
+
+
+State 167
+
+   78 IFYCICLO: FOR PARENTESISIZ INT ID IGUAL ENTERO PUNTOCOMA CONDICION PUNTOCOMA ID . MAS MAS PARENTESISDER
+
+    MAS  shift, and go to state 168
+
+
+State 168
+
+   78 IFYCICLO: FOR PARENTESISIZ INT ID IGUAL ENTERO PUNTOCOMA CONDICION PUNTOCOMA ID MAS . MAS PARENTESISDER
+
+    MAS  shift, and go to state 169
+
+
+State 169
+
+   78 IFYCICLO: FOR PARENTESISIZ INT ID IGUAL ENTERO PUNTOCOMA CONDICION PUNTOCOMA ID MAS MAS . PARENTESISDER
+
+    PARENTESISDER  shift, and go to state 170
+
+
+State 170
+
+   78 IFYCICLO: FOR PARENTESISIZ INT ID IGUAL ENTERO PUNTOCOMA CONDICION PUNTOCOMA ID MAS MAS PARENTESISDER .
+
+    $default  reduce using rule 78 (IFYCICLO)
